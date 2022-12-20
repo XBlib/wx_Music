@@ -19,10 +19,10 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Autowired
     private UserMapper userMapper;
-    public User login(User userDTO) {
+    public User login(User user) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user",userDTO.getUser());
-        queryWrapper.eq("password",userDTO.getPassword());
+        queryWrapper.eq("phone",user.getPhone());
+        queryWrapper.eq("password",user.getPassword());
         User one = null;
         try {
             one = getOne(queryWrapper);
@@ -39,18 +39,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     }
 
-    @Override
-    public Result regUser(User user) {
-        QueryWrapper<User> qw = new QueryWrapper<User>().eq("username", user.getUser());
-        User one = getOne(qw);
-        if(one != null) {
-            throw new ServiceException(Constans.CODE_600,"该账号已注册");
-        }
-        try {
-            userMapper.insert(user);
-        } catch (Exception e) {
-            throw new ServiceException(Constans.CODE_600,"注册失败");
-        }
-        return Result.success();
-    }
 }

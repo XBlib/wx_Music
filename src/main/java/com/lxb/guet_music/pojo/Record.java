@@ -10,10 +10,10 @@ import lombok.Data;
  * @version 1.0
  */
 @Data
-@TableName("t_banner")
-public class Banner {
+@TableName("t_recent")
+public class Record {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private String pic;
-
+    private String picurl;
+    private Integer uid;
 }

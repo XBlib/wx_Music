@@ -8,4 +8,5 @@ import com.lxb.guet_music.pojo.Recommend;
  * @version 1.0
  */
 public interface RecommendService extends IService<Recommend> {
+
 }

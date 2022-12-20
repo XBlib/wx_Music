@@ -16,6 +16,7 @@ import java.util.List;
 public class Group {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Video data;
+    private String name;
+    private Integer navid;
 
 }

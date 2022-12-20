@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @version 1.0
  */
 @Configuration
-@MapperScan("com.lxb.springboot_vue_.mapper")
+@MapperScan("com.lxb.guet_music.mapper")
 public class mybatisPlusConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {

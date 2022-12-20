@@ -13,6 +13,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-  type-aliases-package: com.lxb.springboot_vue_.pojo
+  type-aliases-package: com.lxb.guet_music.pojo
 
 

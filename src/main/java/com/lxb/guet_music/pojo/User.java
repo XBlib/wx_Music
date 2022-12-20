@@ -14,6 +14,8 @@ import lombok.Data;
 public class User {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private String user;
+    private String phone;
     private String password;
+    private String name;
+    private String pic;
 }

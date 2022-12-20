@@ -4,13 +4,15 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.lxb.guet_music.common.Constans;
 import com.lxb.guet_music.common.Result;
+import com.lxb.guet_music.mapper.RecordMapper;
+import com.lxb.guet_music.pojo.Record;
 import com.lxb.guet_music.pojo.User;
+import com.lxb.guet_music.service.RecordService;
 import com.lxb.guet_music.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author XBlib
@@ -21,26 +23,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private RecordService recordService;
     //用户登录
     @PostMapping("/login")
     public Result login(@RequestBody User user) {
-        String username = user.getUser();
+        String username = user.getPhone();
         String password = user.getPassword();
         if (StrUtil.isBlank(username) || StrUtil.isBlank(password)) {
             return Result.error(Constans.CODE_600, "用户名或密码错误");
         }
         User crruser = userService.login(user);
-
+        System.out.println(2);
         return Result.success(crruser);
     }
-    //注册用户信息
-    @PostMapping("/register")
-    public Result register(@RequestBody User user) {
-        String username = user.getUser();
-        String password = user.getPassword();
-        if (StrUtil.isBlank(username) || StrUtil.isBlank(password)) {
-            return Result.error(Constans.CODE_600, "参数错误");
-        }
-        return userService.regUser(user);
+    @PostMapping("/record")
+    public Result record(@RequestBody Record uid){
+
+        List<Record> records = recordService.recordList(uid.getUid());
+        return Result.success(records);
     }
 }

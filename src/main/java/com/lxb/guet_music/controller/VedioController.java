@@ -1,5 +1,6 @@
 package com.lxb.guet_music.controller;
 
+import com.lxb.guet_music.common.Result;
 import com.lxb.guet_music.pojo.Banner;
 import com.lxb.guet_music.pojo.Group;
 import com.lxb.guet_music.pojo.Video;
@@ -20,7 +21,7 @@ public class VedioController {
     @Autowired
     private GroupService groupService;
     @PostMapping("/group/list")
-    public List<Group> getGroupList(@RequestBody Map<String,Object> test) {
-        return null;
+    public Result getGroupList() {
+        return Result.success(groupService.list());
     }
 }
