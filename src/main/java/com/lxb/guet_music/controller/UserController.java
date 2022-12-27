@@ -39,8 +39,25 @@ public class UserController {
     }
     @PostMapping("/record")
     public Result record(@RequestBody Record uid){
-
         List<Record> records = recordService.recordList(uid.getUid());
         return Result.success(records);
+    }
+    @PostMapping("/regist")
+    public Result regist(@RequestBody User user) {
+        String phone = user.getPhone();
+        String password = user.getPassword();
+        if (StrUtil.isBlank(phone) || StrUtil.isBlank(password)) {
+            return Result.error(Constans.CODE_600, "参数错误");
+        }
+        return userService.regUser(user);
+    }
+
+    @PostMapping("/addRecent")
+    public Result addRecent(@RequestBody Record record) {
+        Boolean aBoolean = recordService.addRecent(record.getUid(), record.getPicurl());
+        if(aBoolean) {
+            return Result.success();
+        }
+        return Result.error("该记录以存在");
     }
 }

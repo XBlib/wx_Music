@@ -34,9 +34,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         } else {
             throw new ServiceException(Constans.CODE_600,"用户名和密码错误");
         }
+    }
 
-
-
+    public Result regUser(User user) {
+        QueryWrapper<User> qw = new QueryWrapper<User>().eq("phone", user.getPhone());
+        User one = getOne(qw);
+        if(one != null) {
+            throw new ServiceException(Constans.CODE_600,"该账号已注册");
+        }
+        try {
+            userMapper.insert(user);
+        } catch (Exception e) {
+            throw new ServiceException(Constans.CODE_600,"注册失败");
+        }
+        return Result.success();
     }
 
 }

@@ -13,7 +13,7 @@
 
     </resultMap>
     <select id="TopList" resultType="Song">
-        select picUrl,name from t_song where style=#{style}
+        select pic_url,name from t_song where style=#{style}
     </select>
     <select id="getStyle" resultType="TopSong">
         select DISTINCT style from t_song

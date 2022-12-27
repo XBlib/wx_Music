@@ -10,5 +10,7 @@ import com.lxb.guet_music.pojo.User;
  */
 public interface UserService extends IService<User> {
     User login(User user);
+    Result regUser(User user);
+
 
 }

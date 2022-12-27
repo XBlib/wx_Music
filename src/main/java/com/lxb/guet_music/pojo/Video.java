@@ -16,11 +16,12 @@ public class Video {
     private Integer id;
     private String vid;
     private String url;
-    private Integer gid;
+    private Integer navid;
     private String coverUrl;
     private String title;
     private String avatarUrl;
     private String nickname;
     private Integer praisedCount;
+    private Integer commentCount;
 
 }

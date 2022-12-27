@@ -13,4 +13,7 @@ public class Song {
     private Integer id;
     private String picUrl;
     private String name;
+    private String artname;
+    private String durationTime;
+    private String url;
 }
